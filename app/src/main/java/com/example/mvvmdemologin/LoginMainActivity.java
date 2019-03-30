@@ -29,7 +29,7 @@ public class LoginMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         //loginViewModel = ViewModelProviders.of(this).get(LoginViewModel.class);
-        loginViewModel = new LoginViewModel(getApplication());
+        loginViewModel = new LoginViewModel(LoginMainActivity.this);
         binding = DataBindingUtil.setContentView(LoginMainActivity.this, R.layout.activity_main);
 
         binding.setLifecycleOwner(this);
@@ -53,7 +53,8 @@ public class LoginMainActivity extends AppCompatActivity {
                         binding.txtPassword.setError("Enter at least 6 Digit password");
                         binding.txtPassword.requestFocus();
                     } else {
-
+                        binding.lblEmailAnswer.setText(loginUser.getStrEmailAddress());
+                        binding.lblPasswordAnswer.setText(loginUser.getStrPassword());
                     }
                 }
 
